@@ -11,7 +11,11 @@ public class Player {
   private int id;
   
   public char getType() {
-	    return type;
-	  }
+	  return type;
+  }
+  
+  public int getPlayerId() {
+	  return id;  
+  }
 
 }

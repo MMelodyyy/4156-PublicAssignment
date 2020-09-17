@@ -77,6 +77,14 @@ class PlayGame {
     	}
     });
     
+    // Move
+    app.post("/move/:playerId", ctx ->{
+    	
+    	
+    });
+    
+    
+    
     
     /**
      * Please add your end points here.
