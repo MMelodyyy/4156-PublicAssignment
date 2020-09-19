@@ -27,7 +27,7 @@ public class GameBoard {
   private boolean isDraw;
   
   public void p2Join() {
-	    char type = '0';
+	    char type = '\0';
 	    if (this.p1.getType() == 'X') {
 	      type = 'O';
 	    } else {
@@ -75,6 +75,7 @@ public class GameBoard {
   
   // check if there is a winner
   public void checkstate() {
+	  isDraw = false;
 	  char wintype = '\0';
 	  int dia1 = 0, dia2 = 0;
 	  int[] row = new int[3], col = new int[3];	  
@@ -100,10 +101,18 @@ public class GameBoard {
 		  else if (row[k] == -3 || col[k] == -3) wintype = 'X';
 	  }
 	  
-	  if (!pending) isDraw = false;
+	  if (!pending) isDraw = true;
 	  if (p1.getType() == wintype) winner = 1;
-	  else winner = 2;
+	  else if(p2.getType() == wintype) winner = 2;
 	  return;
+  }
+  
+  public int getP1() {
+	  return p1.getPlayerId();
+  }
+  
+  public int getP2() {
+	  return p2.getPlayerId();
   }
 }
 

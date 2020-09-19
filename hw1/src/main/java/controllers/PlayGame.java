@@ -2,6 +2,9 @@ package controllers;
 
 import io.javalin.Javalin;
 import models.GameBoard;
+import models.Message;
+import models.Move;
+import models.Player;
 
 import java.io.IOException;
 import java.util.Queue;
@@ -79,8 +82,22 @@ class PlayGame {
     
     // Move
     app.post("/move/:playerId", ctx ->{
-    	
-    	
+    	try {
+    		int playerId = ctx.pathParam("playerId",Integer.class).get();
+        	int currPlayer = playerId == 1 ? gameboard.getP1() : gameboard.getP2();
+        	int x = ctx.formParam("x", Integer.class).get();
+        	int y = ctx.formParam("y", Integer.class).get();
+        	Move move = new Move(currPlayer, x, y);
+        	Message message = gameboard.Moveprocess(move);
+        	Gson gson = new Gson();
+        	String boardjson = gson.toJson(gameboard);
+        	sendGameBoardToAllPlayers(boardjson);
+        	String messagejson = gson.toJson(message);
+        	ctx.json(messagejson);
+    		
+    	}catch(Exception ex) {
+    		ctx.result("Can not make a valid move").status(404);	
+    	}    	
     });
     
     

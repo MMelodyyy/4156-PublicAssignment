@@ -1,24 +1,22 @@
 package models;
 
 public class Move {
-  public Move(Player player, int moveX, int moveY) {
-	  this.player = player;
+  public Move(int playerId, int moveX, int moveY) {
+	  this.playerId = playerId;
 	  this.moveX = moveX;
 	  this.moveY = moveY;
   }
 
-  private Player player;
+  private int playerId;
 
   private int moveX;
 
   private int moveY;
   
-  public Player getPlayer() {
-	  return player;
-  }
+
   
   public int getPlayerId() {
-	  return getPlayer().getPlayerId();
+	  return playerId;
   }
   
   public int getMoveX() {
