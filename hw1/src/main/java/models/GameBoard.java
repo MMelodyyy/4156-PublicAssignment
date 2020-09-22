@@ -9,7 +9,8 @@ public class GameBoard {
     this.p1 = new Player(type, 1); // not null but Player
     this.p2 = null; // set to be null 
     this.gameStarted = false;
-    this.turn = type == 'X' ? 1 : 2;
+    //this.turn = type == 'X' ? 1 : 2;
+    this.turn = 1; 
     this.boardState = new char[][]{{'\0', '\0', '\0'}, {'\0', '\0', '\0'}, {'\0', '\0', '\0'}};
     this.winner = 0;
     this.isDraw = false;
@@ -39,7 +40,7 @@ public class GameBoard {
     } else {
       type = 'X';
     }
-    p2 = new Player(type, 2);
+    this.p2 = new Player(type, 2);
     gameStarted = true;
   }
   

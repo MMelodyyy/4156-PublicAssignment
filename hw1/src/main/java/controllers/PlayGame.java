@@ -63,6 +63,7 @@ class PlayGame {
       }
           
     });
+
           
     // Player2 join game
     app.get("/joingame", ctx -> {
@@ -94,7 +95,7 @@ class PlayGame {
       } catch (Exception ex) {
         ctx.result("Can not make a valid move").status(404);
       }
-    });
+    }); 
         
     
     // Web sockets - DO NOT DELETE or CHANGE
